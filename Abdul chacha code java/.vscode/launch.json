@@ -1,0 +1,287 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ArrayUtil",
+            "request": "launch",
+            "mainClass": "ArrayUtil",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "ArrayUitl",
+            "request": "launch",
+            "mainClass": "ArrayUitl",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "CountDigit",
+            "request": "launch",
+            "mainClass": "CountDigit",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "CylinderTest",
+            "request": "launch",
+            "mainClass": "CylinderTest",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "DataTypeDetails",
+            "request": "launch",
+            "mainClass": "DataTypeDetails",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "DeleteElementInArray",
+            "request": "launch",
+            "mainClass": "DeleteElementInArray",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "DisplayDigits",
+            "request": "launch",
+            "mainClass": "DisplayDigits",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "GCD",
+            "request": "launch",
+            "mainClass": "GCD",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "adding2Matrics",
+            "request": "launch",
+            "mainClass": "adding2Matrics",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "areaMethodOverloding",
+            "request": "launch",
+            "mainClass": "areaMethodOverloding",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "arithmaticProgress",
+            "request": "launch",
+            "mainClass": "arithmaticProgress",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "armstrong",
+            "request": "launch",
+            "mainClass": "armstrong",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "condition",
+            "request": "launch",
+            "mainClass": "condition",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "copyArray",
+            "request": "launch",
+            "mainClass": "copyArray",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "fibonacciSeries",
+            "request": "launch",
+            "mainClass": "fibonacciSeries",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "findSumOfarray",
+            "request": "launch",
+            "mainClass": "findSumOfarray",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "geometricProgress",
+            "request": "launch",
+            "mainClass": "geometricProgress",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "increseArrayLength",
+            "request": "launch",
+            "mainClass": "increseArrayLength",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "insertelementInArray",
+            "request": "launch",
+            "mainClass": "insertelementInArray",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "maxArrayUsingMethod",
+            "request": "launch",
+            "mainClass": "maxArrayUsingMethod",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "maxInArray",
+            "request": "launch",
+            "mainClass": "maxInArray",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "multiply2matrics",
+            "request": "launch",
+            "mainClass": "multiply2matrics",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "nameageMethodOverloding",
+            "request": "launch",
+            "mainClass": "nameageMethodOverloding",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "nestedLoop",
+            "request": "launch",
+            "mainClass": "nestedLoop",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "pelendrom",
+            "request": "launch",
+            "mainClass": "pelendrom",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "practice",
+            "request": "launch",
+            "mainClass": "practice",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "prime",
+            "request": "launch",
+            "mainClass": "prime",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "reverce",
+            "request": "launch",
+            "mainClass": "reverce",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "reverceArray",
+            "request": "launch",
+            "mainClass": "reverceArray",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "reverseMethodOverloding",
+            "request": "launch",
+            "mainClass": "reverseMethodOverloding",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "rotatingArray",
+            "request": "launch",
+            "mainClass": "rotatingArray",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "searchElementInArray",
+            "request": "launch",
+            "mainClass": "searchElementInArray",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "secondLargestElementInArray",
+            "request": "launch",
+            "mainClass": "secondLargestElementInArray",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "sortingArrayString",
+            "request": "launch",
+            "mainClass": "sortingArrayString",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "str",
+            "request": "launch",
+            "mainClass": "str",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "string",
+            "request": "launch",
+            "mainClass": "string",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "switchArithmatic",
+            "request": "launch",
+            "mainClass": "switchArithmatic",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "switchCase",
+            "request": "launch",
+            "mainClass": "switchCase",
+            "projectName": "Abdul chacha code java_55df82a"
+        },
+        {
+            "type": "java",
+            "name": "wordOfDigit",
+            "request": "launch",
+            "mainClass": "wordOfDigit",
+            "projectName": "Abdul chacha code java_55df82a"
+        }
+    ]
+}

@@ -12,7 +12,6 @@ public class multiply {
 
         //int result = calculateMultiply(a, b);
         System.out.println(calculateMultiply(a, b)/*result */);
-
     }
     
 }

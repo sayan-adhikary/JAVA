@@ -6,7 +6,7 @@ public class ArrayUtill {       //Vedio-19,20
         }
     }
     public static void main(String[] args) {
-        ArrayUtil arrayUtil=new ArrayUtil();
+        ArrayUtill arrayUtil=new ArrayUtill();
         arrayUtil.printArray(new int[]{3,2,4,5,6,4,3,2,5});
     }
 }

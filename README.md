@@ -540,8 +540,3 @@ Module system introduced in Java 9 organizes code and controls access.
 
 # Running examples
 All examples are plain Java. Save each example in a .java file, compile with javac, run with java.
-
-# Sources
-Based on the W3Schools Java tutorial at https://www.w3schools.com/java/default.asp
-
-

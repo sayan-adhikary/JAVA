@@ -17,7 +17,7 @@ class largestA {
     }
 
     public static void main(String[] args) {
-        int[] arr = { 1, 2, 2, 3, 3};
+        int[] arr = { 1, 2, 2, 3, 3, 8, 3, 4, 4, 4, 4, 4 };
         System.out.println(sumHighestAndLowestFrequency(arr));
     }
 }

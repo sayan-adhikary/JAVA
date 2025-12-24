@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class largestA {
     public static int sumHighestAndLowestFrequency(int[] nums) {
         Map<Integer, Integer> mpp = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
@@ -12,13 +12,12 @@ class Solution {
         for (int valueF : mpp.values()) {
             highK = Math.max(highK, valueF);
             lowF = Math.min(lowF, valueF);
-
         }
         return highK + lowF;
     }
 
     public static void main(String[] args) {
-        int[] arr = { 1, 2, 2, 3, 3, 3 };
+        int[] arr = { 1, 2, 2, 3, 3};
         System.out.println(sumHighestAndLowestFrequency(arr));
     }
 }

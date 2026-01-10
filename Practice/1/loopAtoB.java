@@ -1,14 +1,15 @@
-public class loopAtoB {
-    public static void main(String[] args) {
+import java.util.Scanner;
 
-        int n = 5;
-        for (int i = 1; i <= n; i++) {
-            int number = 60 + i;
-            for (int j = 1; j <= i; j++) {
-                System.out.print(number + " ");
-                number++;
-            }
-            System.out.println();
+public class loopAtoB {
+    public static String sum(int n){
+        if(n % 2 == 0 &&  n > 2){
+            return "Yes";
+        }
+        return "NO";
+    } 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(sum(n));
         }
     }
-}

@@ -17,6 +17,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String n = sc.nextLine(); // ApPLe
+        String m = sc.next();
         capitalize(n);
     }
 }

@@ -1,23 +1,49 @@
 import java.util.*;
 
-public class Main {
-    public static void capitalize(String n) {
-        int length = n.length();
-        // for(int i = 0; i < length; i++){
+class Solution {
+    public int longestSubarray(int[] nums, int k) {
+        int n = nums.length, maxLen = 0, left = 0, right = 0;
 
-        // }
-        char firstLetter = n.charAt(0);
-        if (Character.isLowerCase(firstLetter)) {
-            System.out.println(Character.toUpperCase(n.charAt(0)) + n.substring(1));
-        } else {
-            System.out.println(n);
+        // To store the sum of elements in the window
+        int sum = nums[0];
+
+        // Traverse all the elements
+        while (right < n) {
+
+            // If the sum exceeds K, shrink the window
+            while (left <= right && sum > k) {
+                sum -= nums[left];
+                left++;
+            }
+
+            // Store the maximum length
+            if (sum == k) {
+                maxLen = Math.max(maxLen, right - left + 1);
+            }
+
+            right++;
+            if (right < n)
+                sum += nums[right];
         }
-    }
 
+        return maxLen;
+    }
+}
+
+class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String n = sc.nextLine(); // ApPLe
-        String m = sc.next();
-        capitalize(n);
+        int[] nums = { 10, 5, 2, 7, 1, 9 };
+        int k = 15;
+
+        // Creating an object of Solution class
+        Solution sol = new Solution();
+
+        /*
+         * Function call to find the length
+         * of longest subarray having sum k
+         */
+        int ans = sol.longestSubarray(nums, k);
+
+        System.out.println("The length of longest subarray having sum k is: " + ans);
     }
 }

@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     public int longestSubarray(int[] nums, int k) {
-        int n = nums.length, maxLen = 0, left = 0, right = 0;
+        int n = nums.length, maxLen = Integer.MAX_VALUE, left = 0, right = 0;
 
         // To store the sum of elements in the window
         int sum = nums[0];
@@ -18,7 +18,7 @@ class Solution {
 
             // Store the maximum length
             if (sum == k) {
-                maxLen = Math.max(maxLen, right - left + 1);
+                maxLen = Math.min(maxLen, right - left + 1);
             }
 
             right++;
@@ -32,8 +32,8 @@ class Solution {
 
 class Main {
     public static void main(String[] args) {
-        int[] nums = { 10, 5, 2, 7, 1, 9 };
-        int k = 15;
+        int[] nums = { 2, 3, 1, 2, 4, 3 };
+        int k = 7;
 
         // Creating an object of Solution class
         Solution sol = new Solution();

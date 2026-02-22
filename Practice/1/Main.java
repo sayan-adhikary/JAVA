@@ -2,10 +2,10 @@ import java.util.*;
 
 class Solution {
     public int longestSubarray(int[] nums, int k) {
-        int n = nums.length, maxLen = Integer.MAX_VALUE, left = 0, right = 0;
+        int n = nums.length, maxLen = Integer.MIN_VALUE, left = 0, right = 0;
 
         // To store the sum of elements in the window
-        int sum = 0;
+        int sum = nums[0];
 
         // Traverse all the elements
         while (right < n) {
@@ -21,9 +21,9 @@ class Solution {
                 maxLen = Math.min(maxLen, right - left + 1);
             }
 
+            right++;
             if (right < n)
                 sum += nums[right];
-                right++;
         }
 
         return maxLen;

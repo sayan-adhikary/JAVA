@@ -27,7 +27,7 @@ public class matrix {
                 for (int i = right; i >= left; i--) {
                     System.out.print(matrix[bottom][i] + " ");
                 }
-                bottom--;
+                bottom--;   
             }
 
             if (left <= right) {          // Traverse up

@@ -12,6 +12,7 @@ public class loop {
                 number++;
             }
             System.out.println();
+            sc.close();
         }
     }
 }

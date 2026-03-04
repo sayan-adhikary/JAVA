@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Solution {
     public int longestSubarray(int[] nums, int k) {
         int n = nums.length, maxLen = Integer.MIN_VALUE, left = 0, right = 0;

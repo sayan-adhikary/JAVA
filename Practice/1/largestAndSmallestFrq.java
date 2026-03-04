@@ -8,7 +8,7 @@ class solution {
             mpp.put(s, mpp.getOrDefault(s, 0) + 1);
         }
 
-        int highK = 0, highF = 0, lowK = 0, lowF = nums.length;
+        int highK = 0, lowF = nums.length;
         for (int valueF : mpp.values()) {
             highK = Math.max(highK, valueF);
             lowF = Math.min(lowF, valueF);

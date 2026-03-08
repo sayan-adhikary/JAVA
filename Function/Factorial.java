@@ -1,6 +1,4 @@
 import java.util.*;
-
-import java.util.*;
 public class Factorial {
     public static void printFactorial(int n) {
 

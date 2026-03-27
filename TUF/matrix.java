@@ -1,5 +1,3 @@
-package TUF;
-
 import java.util.*;
 
 public class matrix {
@@ -46,7 +44,7 @@ public class matrix {
                 {4, 5, 6},
                 {7, 8, 9}
         };
-
+        
         spiralOrder(matrix);
     }
 }

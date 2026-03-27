@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 class Solution {
-    public int[] mergeSort(int[] nums) {
+    public static int[] mergeSort(int[] nums) {
         int n = nums.length;
         mergeDevide(nums, 0, n - 1);
         return nums;

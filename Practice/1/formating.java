@@ -1,116 +1,86 @@
-/*Definition of singly linked list:
+/*Definition for singly Linked List
 class ListNode {
     int val;
     ListNode next;
+    ListNode child;
 
     ListNode() {
         val = 0;
         next = null;
+        child = null;
     }
 
     ListNode(int data1) {
         val = data1;
         next = null;
+        child = null;
     }
 
-    ListNode(int data1, ListNode next1) {
+    ListNode(int data1, ListNode next1, ListNode next2) {
         val = data1;
         next = next1;
+        child = next2;
     }
 }
- */
-
+*/
 class Solution {
     /*
      * Approach :-
      * 
-     * 1. Start traversing the linked list from the head.
+     * 1. Create an ArrayList to store all node values.
      * 
-     * 2. Find the Kth node from the current position using
-     * the getKthNode() helper function.
+     * 2. Traverse each linked list using the next pointer.
      * 
-     * 3. If fewer than K nodes remain:
-     * - Connect the remaining nodes to the last processed group.
-     * - Leave them unchanged and stop processing.
+     * 3. For every list:
+     * - Traverse its child chain.
+     * - Store each node's value in the ArrayList.
      * 
-     * 4. Store the node after the Kth node (nextNode)
-     * and temporarily disconnect the current group.
+     * 4. Continue until all nodes from all levels
+     * have been visited.
      * 
-     * 5. Reverse the current group of K nodes using
-     * the reverseLinkedList() helper function.
+     * 5. Sort the ArrayList to obtain values in
+     * ascending order.
      * 
-     * 6. If this is the first group:
-     * - Update the head to the new group's head.
-     * Otherwise:
-     * - Connect the previous reversed group to
-     * the current reversed group.
+     * 6. Create a new linked list using the sorted values.
      * 
-     * 7. Update prevLast to point to the tail of the
-     * newly reversed group.
+     * 7. Connect nodes using the child pointer while
+     * constructing the flattened list.
      * 
-     * 8. Move temp to the start of the next group and
-     * repeat the process.
+     * 8. Return the head of the newly created flattened list.
      * 
-     * 9. Return the modified head after all groups
-     * have been processed.
-     * 
-     * Time Complexity: O(N)
-     * Space Complexity: O(1)
-     * 
-     * helperFunction :-
-     * 
-     * getKthNode():
-     * Returns the Kth node starting from the given node.
-     * Used to determine whether a complete group of K nodes exists.
-     * 
-     * reverseLinkedList():
-     * Reverses a linked list and returns the new head
-     * of the reversed list.
+     * Time Complexity: O(N log N)
+     * Space Complexity: O(N)
      */
 
-    private ListNode getKthNode(ListNode temp, int k) {
-        k--;
-        while (temp != null && k > 0) {
-            k--;
-            temp = temp.next;
+    private ListNode convertArrToLinkedList(List<Integer> arr) {
+        ListNode dummyNode = new ListNode(-1);
+        ListNode temp = dummyNode;
+
+        for (int i = 0; i < arr.size(); i++) {
+            temp.child = new ListNode(arr.get(i));
+
+            temp = temp.child;
         }
-        return temp;
+
+        return dummyNode.child;
     }
 
-    private ListNode reverseLinkedList(ListNode head) {
-        ListNode temp = head;
-        ListNode prev = null;
-        while (temp != null) {
-            ListNode front = temp.next;
-            temp.next = prev;
-            prev = temp;
-            temp = front;
-        }
-        return prev;
-    }
+    public ListNode flattenLinkedList(ListNode head) {
+        List<Integer> arr = new ArrayList<>();
 
-    public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode temp = head;
-        ListNode prevLast = null;
-        while (temp != null) {
-            ListNode kThNode = getKthNode(temp, k);
-            if (kThNode == null) {
-                if (prevLast != null) {
-                    prevLast.next = temp;
-                }
-                break;
+        while (head != null) {
+            ListNode t2 = head;
+
+            while (t2 != null) {
+                arr.add(t2.val);
+
+                t2 = t2.child;
             }
-            ListNode nextNode = kThNode.next;
-            kThNode.next = null;
-            reverseLinkedList(temp);
-            if (temp == head) {
-                head = kThNode;
-            } else {
-                prevLast.next = kThNode;
-            }
-            prevLast = temp;
-            temp = nextNode;
+            head = head.next;
         }
-        return head;
+
+        Collections.sort(arr);
+
+        return convertArrToLinkedList(arr);
     }
 }

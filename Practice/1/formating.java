@@ -1,86 +1,80 @@
-/*Definition for singly Linked List
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode child;
-
-    ListNode() {
-        val = 0;
-        next = null;
-        child = null;
-    }
-
-    ListNode(int data1) {
-        val = data1;
-        next = null;
-        child = null;
-    }
-
-    ListNode(int data1, ListNode next1, ListNode next2) {
-        val = data1;
-        next = next1;
-        child = next2;
-    }
-}
-*/
 class Solution {
     /*
      * Approach :-
      * 
-     * 1. Create an ArrayList to store all node values.
+     * 1. Sort the array in ascending order.
      * 
-     * 2. Traverse each linked list using the next pointer.
+     * 2. Iterate through the array and fix one element
+     * at a time as the first element of the triplet.
      * 
-     * 3. For every list:
-     * - Traverse its child chain.
-     * - Store each node's value in the ArrayList.
+     * 3. Skip duplicate fixed elements to avoid
+     * generating duplicate triplets.
      * 
-     * 4. Continue until all nodes from all levels
-     * have been visited.
+     * 4. Initialize two pointers:
+     * - j = i + 1
+     * - k = n - 1
      * 
-     * 5. Sort the ArrayList to obtain values in
-     * ascending order.
+     * 5. Calculate:
+     * sum = nums[i] + nums[j] + nums[k]
      * 
-     * 6. Create a new linked list using the sorted values.
+     * 6. If sum < 0:
+     * - Increase j to get a larger sum.
      * 
-     * 7. Connect nodes using the child pointer while
-     * constructing the flattened list.
+     * 7. If sum > 0:
+     * - Decrease k to get a smaller sum.
      * 
-     * 8. Return the head of the newly created flattened list.
+     * 8. If sum == 0:
+     * - Store the triplet.
+     * - Move both pointers inward.
+     * - Skip duplicate values for j and k.
      * 
-     * Time Complexity: O(N log N)
-     * Space Complexity: O(N)
+     * 9. Continue until j >= k.
+     * 
+     * 10. Return the list of all unique triplets.
+     * 
+     * Time Complexity: O(N²)
+     * Space Complexity: O(1)
      */
 
-    private ListNode convertArrToLinkedList(List<Integer> arr) {
-        ListNode dummyNode = new ListNode(-1);
-        ListNode temp = dummyNode;
+    public List<List<Integer>> threeSum(int[] nums) {
 
-        for (int i = 0; i < arr.size(); i++) {
-            temp.child = new ListNode(arr.get(i));
+        List<List<Integer>> ans = new ArrayList<>();
 
-            temp = temp.child;
-        }
+        int n = nums.length;
 
-        return dummyNode.child;
-    }
+        Arrays.sort(nums);
 
-    public ListNode flattenLinkedList(ListNode head) {
-        List<Integer> arr = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
 
-        while (head != null) {
-            ListNode t2 = head;
+            int j = i + 1;
+            int k = n - 1;
 
-            while (t2 != null) {
-                arr.add(t2.val);
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
 
-                t2 = t2.child;
+                if (sum < 0) {
+                    j++;
+                } else if (sum > 0) {
+                    k--;
+                } else {
+                    List<Integer> temp = new ArrayList<>();
+                    temp.add(nums[i]);
+                    temp.add(nums[j]);
+                    temp.add(nums[k]);
+                    ans.add(temp);
+
+                    j++;
+                    k--;
+                    while (j < k && nums[j] == nums[j - 1])
+                        j++;
+                    while (j < k && nums[k] == nums[k + 1])
+                        k--;
+                }
             }
-            head = head.next;
         }
 
-        Collections.sort(arr);
-
-        return convertArrToLinkedList(arr);
+        return ans;
     }
 }

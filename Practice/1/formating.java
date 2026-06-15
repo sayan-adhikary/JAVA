@@ -2,39 +2,59 @@ class Solution {
     /*
      * Approach :-
      * 
-     * 1. Initialize:
-     * - ones = 0 to count the current streak of 1's.
-     * - max = 0 to store the maximum streak found.
+     * 1. Calculate the value-to-weight ratio
+     * for every item.
      * 
-     * 2. Traverse the array element by element.
+     * 2. Store:
+     * [ratio, index]
+     * for each item.
      * 
-     * 3. If the current element is 1:
-     * - Increment ones.
-     * - Update max if the current streak is larger.
+     * 3. Sort all items in descending order
+     * of their value-to-weight ratio.
      * 
-     * 4. If the current element is 0:
-     * - Reset ones to 0 since the streak breaks.
+     * 4. Initialize:
+     * totalValue = 0
      * 
-     * 5. Continue until all elements are processed.
+     * 5. Traverse the sorted items.
      * 
-     * 6. Return max as the maximum number of
-     * consecutive 1's.
+     * 6. If the current item completely fits
+     * into the remaining capacity:
+     * - Take the entire item.
+     * - Add its full value.
+     * - Reduce the remaining capacity.
      * 
-     * Time Complexity: O(N)
-     * Space Complexity: O(1)
+     * 7. Otherwise:
+     * - Take only the fraction that fits.
+     * - Add proportional value:
+     * value * (remainingCapacity / weight)
+     * - Stop processing.
+     * 
+     * 8. Return the maximum value obtained.
+     * 
+     * Time Complexity: O(N log N)
+     * Space Complexity: O(N)
      */
+    public double fractionalKnapsack(int[] val, int[] wt, long cap) {
+        int n = val.length;
 
-    public int findMaxConsecutiveOnes(int[] nums) {
-        int max = 0;
-        int ones = 0;
-        for (int ele : nums) {
-            if (ele == 1) {
-                ones++;
-                max = Math.max(max, ones);
+        double[][] ratio = new double[n][2];
+        for (int i = 0; i < n; i++)
+            ratio[i] = new double[] { (double) val[i] / wt[i], i };
+
+        Arrays.sort(ratio, (a, b) -> Double.compare(b[0], a[0]));
+
+        double totalValue = 0.0;
+        for (double[] r : ratio) {
+            int i = (int) r[1];
+            if (wt[i] <= cap) {
+                totalValue += val[i];
+                cap -= wt[i];
             } else {
-                ones = 0;
+                totalValue += val[i] * ((double) cap / wt[i]);
+                break;
             }
         }
-        return max;
+
+        return Math.round(totalValue * 1e6) / 1e6;
     }
 }

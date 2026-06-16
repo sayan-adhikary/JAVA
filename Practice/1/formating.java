@@ -2,59 +2,59 @@ class Solution {
     /*
      * Approach :-
      * 
-     * 1. Calculate the value-to-weight ratio
-     * for every item.
+     * 1. Sort the array so that duplicate
+     * elements become adjacent.
      * 
-     * 2. Store:
-     * [ratio, index]
-     * for each item.
+     * 2. Use recursion to generate subsets.
      * 
-     * 3. Sort all items in descending order
-     * of their value-to-weight ratio.
+     * 3. At each index, make two choices:
      * 
-     * 4. Initialize:
-     * totalValue = 0
+     * Include:
+     * - Add nums[ind] to the current subset.
+     * - Recurse for the next index.
+     * - Backtrack by removing the element.
      * 
-     * 5. Traverse the sorted items.
+     * Exclude:
+     * - Skip all consecutive duplicate
+     * occurrences of nums[ind].
+     * - Recurse from the first different
+     * element.
      * 
-     * 6. If the current item completely fits
-     * into the remaining capacity:
-     * - Take the entire item.
-     * - Add its full value.
-     * - Reduce the remaining capacity.
+     * 4. When the recursion reaches the end
+     * of the array:
+     * - Add the current subset to the answer.
      * 
-     * 7. Otherwise:
-     * - Take only the fraction that fits.
-     * - Add proportional value:
-     * value * (remainingCapacity / weight)
-     * - Stop processing.
+     * 5. Continue until all possible choices
+     * have been explored.
      * 
-     * 8. Return the maximum value obtained.
-     * 
-     * Time Complexity: O(N log N)
+     * Time Complexity: O(N × 2^N)
      * Space Complexity: O(N)
      */
-    public double fractionalKnapsack(int[] val, int[] wt, long cap) {
-        int n = val.length;
+    private void func(int ind, List<Integer> arr, int[] nums, List<List<Integer>> ans) {
+        if (ind == nums.length) {
+            ans.add(new ArrayList<>(arr));
+            return;
+        }
 
-        double[][] ratio = new double[n][2];
-        for (int i = 0; i < n; i++)
-            ratio[i] = new double[] { (double) val[i] / wt[i], i };
+        arr.add(nums[ind]);
+        func(ind + 1, arr, nums, ans);
+        arr.remove(arr.size() - 1);
 
-        Arrays.sort(ratio, (a, b) -> Double.compare(b[0], a[0]));
-
-        double totalValue = 0.0;
-        for (double[] r : ratio) {
-            int i = (int) r[1];
-            if (wt[i] <= cap) {
-                totalValue += val[i];
-                cap -= wt[i];
-            } else {
-                totalValue += val[i] * ((double) cap / wt[i]);
-                break;
+        for (int j = ind + 1; j < nums.length; j++) {
+            if (nums[j] != nums[ind]) {
+                func(j, arr, nums, ans);
+                return;
             }
         }
 
-        return Math.round(totalValue * 1e6) / 1e6;
+        func(nums.length, arr, nums, ans);
     }
-}
+
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> arr = new ArrayList<>();
+        Arrays.sort(nums);
+        func(0, arr, nums, ans);
+        return ans;
+    }
+};

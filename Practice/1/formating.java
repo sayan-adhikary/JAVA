@@ -2,59 +2,60 @@ class Solution {
     /*
      * Approach :-
      * 
-     * 1. Sort the array so that duplicate
-     * elements become adjacent.
+     * 1. Store numbers from 1 to n in a list.
      * 
-     * 2. Use recursion to generate subsets.
+     * 2. Precompute factorial values:
+     * fact[i] = i!
      * 
-     * 3. At each index, make two choices:
+     * 3. Convert k to 0-based indexing:
+     * k = k - 1
      * 
-     * Include:
-     * - Add nums[ind] to the current subset.
-     * - Recurse for the next index.
-     * - Backtrack by removing the element.
+     * 4. For each position from left to right:
      * 
-     * Exclude:
-     * - Skip all consecutive duplicate
-     * occurrences of nums[ind].
-     * - Recurse from the first different
-     * element.
+     * - Compute:
+     * index = k / fact[i]
      * 
-     * 4. When the recursion reaches the end
-     * of the array:
-     * - Add the current subset to the answer.
+     * - The number at this index is the
+     * next digit of the permutation.
      * 
-     * 5. Continue until all possible choices
-     * have been explored.
+     * - Append the number to the answer.
      * 
-     * Time Complexity: O(N × 2^N)
+     * - Remove the selected number from
+     * the list of available numbers.
+     * 
+     * - Update:
+     * k = k % fact[i]
+     * 
+     * 5. Repeat until all positions are filled.
+     * 
+     * 6. Return the constructed permutation string.
+     * 
+     * Time Complexity: O(N²)
      * Space Complexity: O(N)
      */
-    private void func(int ind, List<Integer> arr, int[] nums, List<List<Integer>> ans) {
-        if (ind == nums.length) {
-            ans.add(new ArrayList<>(arr));
-            return;
+    public String getPermutation(int n, int k) {
+        List<Integer> nums = new ArrayList<>();
+        for (int i = 1; i <= n; i++)
+            nums.add(i);
+
+        int[] fact = new int[n];
+        fact[0] = 1;
+        for (int i = 1; i < n; i++)
+            fact[i] = fact[i - 1] * i;
+
+        k--;
+
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = n - 1; i >= 0; i--) {
+            int index = k / fact[i];
+            ans.append(nums.get(index));
+
+            nums.remove(index);
+
+            k %= fact[i];
         }
 
-        arr.add(nums[ind]);
-        func(ind + 1, arr, nums, ans);
-        arr.remove(arr.size() - 1);
-
-        for (int j = ind + 1; j < nums.length; j++) {
-            if (nums[j] != nums[ind]) {
-                func(j, arr, nums, ans);
-                return;
-            }
-        }
-
-        func(nums.length, arr, nums, ans);
+        return ans.toString();
     }
-
-    public List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> arr = new ArrayList<>();
-        Arrays.sort(nums);
-        func(0, arr, nums, ans);
-        return ans;
-    }
-};
+}
